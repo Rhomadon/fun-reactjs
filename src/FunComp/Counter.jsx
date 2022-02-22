@@ -3,8 +3,9 @@ import { useEffect, useState } from "react"
 
 
 const Counter = () => {
+    
     let [text, setText] = useState('')
-    let [view, setView] = useState({})
+    let [view, setView] = useState([])
 
     useEffect(() => {
 
@@ -15,23 +16,27 @@ const Counter = () => {
         const article = res.data.articles
         setView(article)
 
-            console.log(article)
-        
         })
 
         localStorage.setItem('text', text)
-        console.log('text');
+        console.log(text)
 
     }, [text])
-    
 
     return (
-        <div>
+        <div className="header">
+            {
+                console.log(view)
+            }
+            {
+                
+                console.log(view.author)
+            }
             <nav class="navbar fixed-top navbar-light bg-light">
                 <div class="container">
                     <h1 class="navbar-brand">RNews</h1>
                     <form class="d-flex">
-                    <input type="text" class="form-control me-2" placeholder="Search" aria-label="Search" onChange={(a) => setText(a.target.value)}/>
+                    <input type="text" class="form-control me-2" placeholder="Search" aria-label="Search" onChange={(a) => setText(a.target.value)} />
                     </form>
                 </div>
             </nav>
@@ -41,9 +46,7 @@ const Counter = () => {
                         <div class="card">
                             <img src="" class="card-img-top" alt="" />
                             <div class="card-body">
-                                <h5 class="card-title">{
-                                view.title
-                                }</h5>
+                                <h5 class="card-title">Title</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Autor</h6>
                                 <p class="card-text"><small class="text-muted">21 Januari 2022</small></p>
                                 <p class="card-text">Deskripsi</p>
