@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react"
 import axios from "axios"
 import { useEffect, useState } from "react"
 
@@ -23,15 +24,11 @@ const Counter = () => {
 
     }, [text])
 
+    
     return (
+
         <div className="header">
-            {
-                console.log(view)
-            }
-            {
-                
-                console.log(view.author)
-            }
+            
             <nav class="navbar fixed-top navbar-light bg-light">
                 <div class="container">
                     <h1 class="navbar-brand">RNews</h1>
@@ -41,23 +38,26 @@ const Counter = () => {
                 </div>
             </nav>
             <div class="container">
-                <div class="row row-cols-1 row-cols-md-4 g-4"> 
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                {view.map(( v ) => (<cardComponent> 
                     <div class="col">
                         <div class="card">
-                            <img src="" class="card-img-top" alt="" />
+                            <img src={v.urlToImage} class="card-img-top" alt="" />
                             <div class="card-body">
-                                <h5 class="card-title">Title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Autor</h6>
-                                <p class="card-text"><small class="text-muted">21 Januari 2022</small></p>
-                                <p class="card-text">Deskripsi</p>
-                                <button href="" class="btn btn-primary" >Selengkapnya</button>           
+                                <h5 class="card-title">{ v.title }</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{v.author}</h6>
+                                <p class="card-text"><small class="text-muted">{v.publishedAt}</small></p>
+                                <p class="card-text">{v.description}</p>
+                                <button href={v.url} class="btn btn-primary" >Selengkapnya</button>           
                             </div>
                         </div>
                     </div>
+                    </cardComponent>) )}
                 </div>
             </div>
         </div>
-    )
+    ) 
 }
+
 
 export default Counter
