@@ -39,7 +39,7 @@ const Counter = () => {
             </nav>
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-4 g-4">
-                {view.map(( v ) => (<cardComponent> 
+                {view.map(( v ) => ( 
                     <div class="col">
                         <div class="card">
                             <img src={v.urlToImage} class="card-img-top" alt="" />
@@ -52,7 +52,7 @@ const Counter = () => {
                             </div>
                         </div>
                     </div>
-                    </cardComponent>) )}
+                    ) )}
                 </div>
             </div>
         </div>
